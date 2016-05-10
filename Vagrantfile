@@ -19,12 +19,8 @@ Vagrant.configure("2") do |config|
 	    echo "======= INSTALL DRUPAL CONSOLE ========="
 	    cd ~
 	    # Install Drupal Console
-	    if [ ! -f "/usr/local/bin/drupal" ]; then
-	      curl https://drupalconsole.com/installer -L -o drupal.phar
-	      sudo mv console.phar /usr/local/bin/drupal
-	      sudo chmod +x /usr/local/bin/drupal
-	      drupal init --override
-	    fi
+      composer global require drupal/console:@stable
+      echo sudo "PATH=$PATH:~/.composer/vendor/bin" >> ~/.bash_profile
 	    echo "------- drupal console installed -------"
 
 	    echo "======= INSTALL DRUSH ========="
